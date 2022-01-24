@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Seller.SellerLoginActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/img_login_seller"
+        android:src="@drawable/wedding_login"
+        />
+
+    <TextView
+        android:id="@+id/seller_login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wedding Organizer Login"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:layout_below="@id/img_login_seller"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seller_login_email"
+        android:layout_marginHorizontal="15dp"
+        android:layout_below="@+id/seller_login_title"
+        android:hint="Input your email"
+        android:inputType="text"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seller_login_password"
+        android:layout_marginHorizontal="15dp"
+        android:layout_below="@+id/seller_login_email"
+        android:hint="Input your password"
+        android:inputType="text"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seller_login_btn"
+        android:layout_marginHorizontal="15dp"
+        android:layout_below="@+id/seller_login_password"
+        android:text="Login Into Account"
+        android:inputType="text"
+        android:padding="10dp"
+        app:backgroundTint="@null"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
