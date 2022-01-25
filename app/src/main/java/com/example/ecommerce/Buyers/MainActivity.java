@@ -16,6 +16,7 @@ import com.example.ecommerce.Model.Users;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
 //import com.example.ecommerce.Seller.SellerHomeActivity;
+import com.example.ecommerce.Seller.SellerLoginActivity;
 import com.example.ecommerce.Seller.SellerPaymentActivity;
 import com.example.ecommerce.Seller.SellerRegistrationActivity;
 import com.example.ecommerce.Seller.SellerPaymentConfirmationStatusActivity;
@@ -50,7 +51,7 @@ public class  MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SellerRegistrationActivity.class);
+                Intent intent = new Intent(MainActivity.this, SellerLoginActivity.class);
                 startActivity(intent);
             }
         });

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.R;
@@ -39,8 +40,9 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
     private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
-    private ImageView InputProductImage;
+    private ImageView InputProductImage,OutputProductImage;
     private EditText InputProductName, InputProductDescription, InputProductPrice;
+    private TextView imageText;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String productRandomKey, downloadImageUrl;
@@ -57,6 +59,9 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
+        OutputProductImage = (ImageView) findViewById(R.id.package_picture);
+        imageText = findViewById(R.id.upload_product_image);
+
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
         InputProductPrice = (EditText) findViewById(R.id.product_price);
@@ -119,7 +124,11 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
         if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
             ImageUri = data.getData();
-            InputProductImage.setImageURI(ImageUri);
+//            InputProductImage.setImageURI(ImageUri);
+            InputProductImage.setVisibility(View.INVISIBLE);
+            OutputProductImage.setImageURI(ImageUri);
+            OutputProductImage.setVisibility(View.VISIBLE);
+            imageText.setVisibility(View.INVISIBLE);
         }
     }
 

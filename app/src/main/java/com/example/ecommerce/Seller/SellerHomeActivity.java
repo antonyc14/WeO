@@ -41,7 +41,7 @@ public class SellerHomeActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
 
     private DatabaseReference sellersRef;
-    private String sStatus;
+    private String sStatus = "";
 
     private DatabaseReference unverifiedProductsRef;
 
@@ -87,20 +87,30 @@ public class SellerHomeActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             sStatus = snapshot.child("status").getValue().toString();
+//                            Toast.makeText(SellerHomeActivity.this, "your status is " + sStatus, Toast.LENGTH_SHORT).show();
+                            if(!(sStatus.equals("active"))){
+                                final FirebaseAuth mAuth;
+                                mAuth = FirebaseAuth.getInstance();
+                                mAuth.signOut();
+
+                                Intent intent = new Intent(SellerHomeActivity.this, SellerLoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                Toast.makeText(SellerHomeActivity.this, "Your Account is Inactive, Please Contact The Developer for More Info", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                        else{
+                            Toast.makeText(SellerHomeActivity.this, "Status Error", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
 
-        if(sStatus != "active"){
-            Intent intent = new Intent(SellerHomeActivity.this, SellerLoginActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, "Your Account is Inactive, Please Contact The Developer for More Info", Toast.LENGTH_SHORT).show();
-        }
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
