@@ -83,14 +83,14 @@
         android:textStyle="bold|italic"/>
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_margin="32dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
-            android:src="@drawable/add"/>
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_margin="32dp"-->
+<!--            android:backgroundTint="@android:color/holo_orange_dark"-->
+<!--            android:src="@drawable/add"/>-->
 
 
 </RelativeLayout>

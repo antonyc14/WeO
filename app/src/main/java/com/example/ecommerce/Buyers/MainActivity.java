@@ -36,7 +36,7 @@ public class  MainActivity extends AppCompatActivity {
     private TextView sellerLoginBtn;
 
     /* test variable */
-    private FloatingActionButton fab;
+//    private FloatingActionButton fab;
     /* test variable */
 
     @Override
@@ -46,15 +46,15 @@ public class  MainActivity extends AppCompatActivity {
 
 
         /* test activity button */
-        fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SellerLoginActivity.class);
-                startActivity(intent);
-            }
-        });
+//        fab = findViewById(R.id.fab);
+//
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, SellerLoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         /* test activity button */
 
 

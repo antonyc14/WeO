@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
@@ -43,9 +46,11 @@ public class HomeActivity extends AppCompatActivity
 {
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
 
     private String type = "";
+
+//    private FloatingActionButton fab;
 
 //    getSupportActionBar().hide();
 
@@ -68,18 +73,6 @@ public class HomeActivity extends AppCompatActivity
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(!type.equals("Admin")){
-//                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-//                    startActivity(intent);
-//                }
-//
-//
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -103,7 +96,39 @@ public class HomeActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(layoutManager);
+
+
+        FloatingActionButton fabAscending = (FloatingActionButton) findViewById(R.id.fab_sort_ascending);
+        FloatingActionButton fabDescending = (FloatingActionButton) findViewById(R.id.fab_sort_descending);
+        fabAscending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fabAscending.setVisibility(View.INVISIBLE);
+                fabDescending.setVisibility(View.VISIBLE);
+
+                layoutManager.setReverseLayout(false);
+                layoutManager.setStackFromEnd(false);
+                FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = getAllProductsSorted();
+                recyclerView.setAdapter(adapter);
+                adapter.startListening();
+            }
+        });
+
+        fabDescending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fabAscending.setVisibility(View.VISIBLE);
+                fabDescending.setVisibility(View.INVISIBLE);
+
+                FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = getAllProductsSorted();
+                layoutManager.setReverseLayout(true);
+                layoutManager.setStackFromEnd(true);
+                recyclerView.setAdapter(adapter);
+                adapter.startListening();
+            }
+        });
     }
 
 
@@ -112,54 +137,100 @@ public class HomeActivity extends AppCompatActivity
     {
         super.onStart();
 
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = getAllProducts();
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @NotNull
+    private FirebaseRecyclerAdapter<Products, ProductViewHolder> getAllProducts() {
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
                         .build();
 
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+        return new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+                holder.txtProductName.setText(model.getPname());
+                holder.txtProductDescription.setText(model.getDescription());
+                holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
-                    {
-                        holder.txtProductName.setText(model.getPname());
-                        holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Price = Rp." + model.getPrice());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                    public void onClick(View v) {
+                        Intent intent;
+                        if (type.equals("Admin")) {
+                            intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                        } else {
+                            intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                        }
+                        intent.putExtra("pid", model.getPid());
+                        startActivity(intent);
 
-
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent;
-                                if(type.equals("Admin")){
-                                    intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
-                                }
-                                else{
-                                    intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                }
-                                intent.putExtra("pid", model.getPid());
-                                startActivity(intent);
-
-                            }
-                        });
                     }
+                });
+            }
 
-                    @NonNull
-                    @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-                    {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
-                    }
-                };
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
+            @NonNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_layout, parent, false);
+                ProductViewHolder holder = new ProductViewHolder(view);
+                return holder;
+            }
+        };
     }
 
+    private FirebaseRecyclerAdapter<Products, ProductViewHolder> getAllProductsSorted() {
+        FirebaseRecyclerOptions<Products> options =
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(ProductsRef.orderByChild("price"), Products.class)
+                        .build();
+
+
+        return new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
+            {
+                holder.txtProductName.setText(model.getPname());
+                holder.txtProductDescription.setText(model.getDescription());
+                holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent;
+                        if(type.equals("Admin")){
+                            intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                        }
+                        else{
+                            intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                        }
+                        intent.putExtra("pid", model.getPid());
+                        startActivity(intent);
+
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+            {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_layout, parent, false);
+                ProductViewHolder holder = new ProductViewHolder(view);
+                return holder;
+            }
+        };
+    }
 
     @Override
     public void onBackPressed() {

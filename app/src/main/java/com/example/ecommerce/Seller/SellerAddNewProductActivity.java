@@ -38,7 +38,8 @@ import java.util.HashMap;
 
 public class SellerAddNewProductActivity extends AppCompatActivity {
 
-    private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
+    private String CategoryName, Description, Pname, saveCurrentDate, saveCurrentTime;
+    private Integer Price;
     private Button AddNewProductButton;
     private ImageView InputProductImage,OutputProductImage;
     private EditText InputProductName, InputProductDescription, InputProductPrice;
@@ -134,7 +135,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
     private void ValidateProductData() {
         Description = InputProductDescription.getText().toString();
-        Price = InputProductPrice.getText().toString();
+        Price = Integer.parseInt(InputProductPrice.getText().toString());
         Pname = InputProductName.getText().toString();
 
 
@@ -142,7 +143,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
             Toast.makeText(this, "Product image is mandatory...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Description)) {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(Price)) {
+        } else if (TextUtils.isEmpty(Price.toString())) {
             Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Pname)) {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();

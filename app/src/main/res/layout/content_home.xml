@@ -18,13 +18,24 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sort_ascending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:backgroundTint="@android:color/white"
+        android:src="@drawable/sort_ascending"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_sort_descending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:src="@drawable/"/>
+        android:backgroundTint="@android:color/white"
+        android:src="@drawable/sort_descending"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

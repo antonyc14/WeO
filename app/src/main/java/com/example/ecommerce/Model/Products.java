@@ -1,17 +1,19 @@
 package com.example.ecommerce.Model;
 
 public class Products {
-    private String pname, description, price,
+    private String pname, description,
             image, category, pid, date, time,
             productState, sellerPhone, sellerAddress,
             sellerName;
+
+    private Integer price;
 
     public Products()
     {
 
     }
 
-    public Products(String pname, String description, String price,
+    public Products(String pname, String description, Integer price,
                     String image, String category, String pid, String date,
                     String time, String productState, String sellerPhone,
                     String sellerAddress, String sellerName) {
@@ -57,11 +59,11 @@ public class Products {
         this.description = description;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
