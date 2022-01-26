@@ -25,6 +25,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
         android:backgroundTint="@android:color/holo_orange_dark"
-        android:src="@drawable/sort"/>
+        android:src="@drawable/"/>
 
 </RelativeLayout>
