@@ -179,6 +179,8 @@ public class SellerPaymentActivity extends AppCompatActivity {
         Intent thisIntent = getIntent();
 
         HashMap<String, Object> invoiceMap = new HashMap<>();
+
+        invoiceMap.put("sid", thisIntent.getStringExtra("sellerID"));
         invoiceMap.put("sellerName", thisIntent.getStringExtra("sellerName"));
         invoiceMap.put("image", downloadImageUrl);
         
