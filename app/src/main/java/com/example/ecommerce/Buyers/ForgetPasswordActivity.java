@@ -185,10 +185,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(ForgetPasswordActivity.this, "You have set Security Questions", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
                         Intent intent = new Intent(ForgetPasswordActivity.this, HomeActivity.class);
                         startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(ForgetPasswordActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

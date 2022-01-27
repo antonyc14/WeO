@@ -9,11 +9,11 @@
 <!--            android:icon="@drawable/nav_cart"-->
 <!--            android:title="Cart"-->
 <!--            android:iconTint="@color/white"/>-->
-        <item
-            android:id="@+id/nav_search"
-            android:icon="@drawable/orders"
-            android:title="Search"
-            android:iconTint="@color/white"/>
+<!--        <item-->
+<!--            android:id="@+id/nav_search"-->
+<!--            android:icon="@drawable/orders"-->
+<!--            android:title="Search"-->
+<!--            android:iconTint="@color/white"/>-->
         <item
             android:id="@+id/nav_List"
             android:icon="@drawable/category"

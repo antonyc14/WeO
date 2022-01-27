@@ -189,7 +189,7 @@ public class SellerPaymentActivity extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            Intent intent = new Intent(SellerPaymentActivity.this, SellerLoginActivity.class);
+                            Intent intent = new Intent(SellerPaymentActivity.this, SellerPaymentConfirmationStatusActivity.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();

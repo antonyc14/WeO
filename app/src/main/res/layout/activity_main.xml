@@ -13,10 +13,10 @@
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:src="@drawable/weo"
+        android:src="@drawable/weomain"
         />
 
     <TextView
@@ -26,8 +26,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginHorizontal="44dp"
-        android:layout_below="@+id/app_logo"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:text="Time to find the right partner, let us handle the rest"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -35,10 +35,11 @@
         android:textStyle="bold|italic"/>
 
     <Button
+        android:layout_centerVertical="true"
         android:id="@+id/main_join_now_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_login_btn"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -46,18 +47,15 @@
         android:background="@drawable/input_design"
         android:padding="20dp"
         android:textAllCaps="false"
-        android:textStyle="bold"
         android:textSize="22sp"
         android:text="Join Now"
         android:textColor="@color/black"/>
 
     <Button
+        android:layout_below="@+id/main_join_now_btn"
         android:id="@+id/main_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-
-        android:layout_above="@+id/seller_main_login_btn"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -71,15 +69,15 @@
 
     <TextView
         android:id="@+id/seller_main_login_btn"
-        android:layout_width="280dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/main_login_btn"
         android:text="Wants to become a WO?"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:textStyle="bold|italic"/>
 
 

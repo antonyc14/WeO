@@ -18,7 +18,8 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
             android:id="@+id/product_seller_name"/>
         <ImageView
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:textAlignment="center"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/black"
             android:id="@+id/product_seller_price"/>
         <TextView
             android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             android:textAlignment="center"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/black"
             android:id="@+id/product_seller_description"/>
 
         <TextView
@@ -58,7 +59,7 @@
             android:textAlignment="center"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/black"
             android:id="@+id/product_seller_state"/>
     </RelativeLayout>
 

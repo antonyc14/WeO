@@ -12,20 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Product Name"
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:id="@+id/product_name"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@id/product_name"
             android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"
             android:id="@+id/product_image"/>
         <TextView
             android:layout_width="match_parent"
@@ -34,8 +34,7 @@
             android:layout_below="@id/product_image"
             android:textAlignment="center"
             android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/black"
             android:id="@+id/product_price"/>
         <TextView
             android:layout_width="match_parent"
@@ -45,8 +44,7 @@
             android:layout_marginTop="8dp"
             android:textAlignment="center"
             android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/black"
             android:id="@+id/product_description"/>
     </RelativeLayout>
 

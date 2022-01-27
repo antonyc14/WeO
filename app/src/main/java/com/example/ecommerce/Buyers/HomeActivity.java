@@ -283,15 +283,15 @@ public class HomeActivity extends AppCompatActivity
 //            }
 //
 //        }
-        if (id == R.id.nav_search)
-        {
-            if(!type.equals("Admin")){
-                Intent intent = new Intent(HomeActivity.this, SearchProductActivity.class);
-                startActivity(intent);
-            }
-
-        }
-        else if (id == R.id.nav_List)
+//        if (id == R.id.nav_search)
+//        {
+//            if(!type.equals("Admin")){
+//                Intent intent = new Intent(HomeActivity.this, SearchProductActivity.class);
+//                startActivity(intent);
+//            }
+//
+//        }
+         if (id == R.id.nav_List)
         {
             Intent intent = new Intent(HomeActivity.this, WeddingToDoActivity.class);
             startActivity(intent);

@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="25dp"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="@drawable/bordered_relative_layout"
+        android:background="@drawable/input_design"
         android:orientation="horizontal"
         >
 
@@ -98,6 +98,7 @@
 
 
     <Button
+        app:backgroundTint="@null"
         android:id="@+id/add_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
