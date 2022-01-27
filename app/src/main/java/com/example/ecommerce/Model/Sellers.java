@@ -1,7 +1,7 @@
 package com.example.ecommerce.Model;
 
 public class Sellers {
-    private String sid, name, phone, address, email;
+    private String sid, name, phone, address, email,status;
 
     public String getSid() {
         return sid;
@@ -41,5 +41,13 @@ public class Sellers {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

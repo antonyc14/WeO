@@ -38,7 +38,7 @@ public class SellerHomeActivity extends AppCompatActivity {
     private TextView mTextMessage;
 
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
 
     private DatabaseReference sellersRef;
     private String sStatus = "";
