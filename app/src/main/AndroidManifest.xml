@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce.NoActionBar"
         tools:replace="android:theme">
-        <activity android:name=".Seller.SellerPaymentConfirmationStatusActivity"
-            ></activity>
+        <activity android:name=".Admin.AdminLoginActivity"></activity>
+        <activity android:name=".Seller.SellerPaymentConfirmationStatusActivity" />
         <activity android:name=".Seller.SellerPaymentActivity" />
         <activity android:name=".Buyers.WeddingToDoActivity" /> <!-- <activity android:name=".Seller.SellerHomeActivity"></activity> -->
-        <activity android:name=".Admin.AdminCheckNewProductActivity" />
+        <activity android:name=".Admin.AdminCheckNewProductsActivity" />
         <activity android:name=".Admin.AdminHomeActivity" />
         <activity
             android:name=".Seller.SellerHomeActivity"
@@ -26,7 +26,7 @@
         <activity android:name=".Seller.SellerLoginActivity" />
         <activity android:name=".Seller.SellerRegistrationActivity" />
         <activity android:name=".Buyers.ForgetPasswordActivity" />
-        <activity android:name=".Admin.AdminMaintainProductsActivity" />
+        <activity android:name=".Admin.AdminApproveVendorActivity" />
         <activity android:name=".Buyers.SearchProductActivity" />
         <activity android:name=".Admin.AdminUserProductsActivity" />
         <activity android:name=".Admin.AdminNewOrdersActivity" />

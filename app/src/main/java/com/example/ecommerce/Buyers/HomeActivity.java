@@ -1,5 +1,7 @@
 package com.example.ecommerce.Buyers;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,12 +10,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,10 +21,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecommerce.Admin.AdminMaintainProductsActivity;
+import com.example.ecommerce.Admin.AdminApproveVendorActivity;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
+import com.example.ecommerce.Seller.SellerPaymentActivity;
 import com.example.ecommerce.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -154,26 +154,27 @@ public class HomeActivity extends AppCompatActivity
         return new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                holder.txtProductName.setText(model.getPname());
-                holder.txtProductDescription.setText(model.getDescription());
-                holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
-                Picasso.get().load(model.getImage()).into(holder.imageView);
+                    holder.txtProductName.setText(model.getPname());
+                    holder.txtProductDescription.setText(model.getDescription());
+                    holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
+                    Picasso.get().load(model.getImage()).into(holder.imageView);
 
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent;
-                        if (type.equals("Admin")) {
-                            intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
-                        } else {
-                            intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent;
+                            if (type.equals("Admin")) {
+                                intent = new Intent(HomeActivity.this, AdminApproveVendorActivity.class);
+                            } else {
+                                intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                            }
+                            intent.putExtra("pid", model.getPid());
+                            startActivity(intent);
+
                         }
-                        intent.putExtra("pid", model.getPid());
-                        startActivity(intent);
+                    });
 
-                    }
-                });
             }
 
             @NonNull
@@ -197,28 +198,28 @@ public class HomeActivity extends AppCompatActivity
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
             {
-                holder.txtProductName.setText(model.getPname());
-                holder.txtProductDescription.setText(model.getDescription());
-                holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
-                Picasso.get().load(model.getImage()).into(holder.imageView);
+                if(model.getProductState().equalsIgnoreCase("Approved")) {
+                    holder.txtProductName.setText(model.getPname());
+                    holder.txtProductDescription.setText(model.getDescription());
+                    holder.txtProductPrice.setText("Price = Rp. " + model.getPrice().toString());
+                    Picasso.get().load(model.getImage()).into(holder.imageView);
 
 
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent;
+                            if (type.equals("Admin")) {
+                                intent = new Intent(HomeActivity.this, AdminApproveVendorActivity.class);
+                            } else {
+                                intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                            }
+                            intent.putExtra("pid", model.getPid());
+                            startActivity(intent);
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent;
-                        if(type.equals("Admin")){
-                            intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                         }
-                        else{
-                            intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                        }
-                        intent.putExtra("pid", model.getPid());
-                        startActivity(intent);
-
-                    }
-                });
+                    });
+                }
             }
 
             @NonNull
@@ -238,8 +239,26 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+//            super.onBackPressed();
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Really Exit?")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Paper.book().destroy();
+
+                            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }).create().show();
+
+
         }
+
     }
 
 

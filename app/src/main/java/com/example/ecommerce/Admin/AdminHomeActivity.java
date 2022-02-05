@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ecommerce.Buyers.HomeActivity;
 import com.example.ecommerce.Buyers.MainActivity;
 import com.example.ecommerce.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    private Button updateBtn, logoutBtn, checkBookingBtn, approveProductBtn;
+    private Button approveVendorBtn, logoutBtn, checkBookingBtn, approveProductBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,22 +23,25 @@ public class AdminHomeActivity extends AppCompatActivity {
         approveProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, AdminCheckNewProductActivity.class);
+                Intent intent = new Intent(AdminHomeActivity.this, AdminCheckNewProductsActivity.class);
                 startActivity(intent);
             }
         });
 
-        updateBtn = findViewById(R.id.admin_update_btn);
-        updateBtn.setOnClickListener(new View.OnClickListener() {
+        // ---------------1--------------
+        approveVendorBtn = findViewById(R.id.approve_vendor_btn);
+        approveVendorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, AdminMaintainProductsActivity.class);
+                Intent intent = new Intent(AdminHomeActivity.this, AdminApproveVendorActivity.class);
                 intent.putExtra("Admin","Admin");
                 startActivity(intent);
-                finish();
             }
         });
+        // ----------------1---------------
 
+
+        // oke
         logoutBtn = findViewById(R.id.admin_logout_btn);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +54,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        // ----------------2-----------------
         checkBookingBtn = findViewById(R.id.check_booking_btn);
         checkBookingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +65,8 @@ public class AdminHomeActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                 startActivity(intent);
-                finish();
             }
         });
+        // -----------------2---------------------
     }
 }

@@ -2,33 +2,34 @@ package com.example.ecommerce.Model;
 
 public class AdminOrders {
 
-    private  String name, phone, date,time,totalAmount;
+    private  String orderId, sid, userPhone, sellerPhone, date, orderStatus;
 
     public AdminOrders() {
     }
 
-    public AdminOrders(String name, String phone, String date, String time, String totalAmount) {
-        this.name = name;
-        this.phone = phone;
+    public AdminOrders(String id, String sid, String userPhone, String sellerPhone, String date, String orderStatus) {
+        this.orderId = id;
+        this.sid = sid;
+        this.userPhone = userPhone;
+        this.sellerPhone = sellerPhone;
         this.date = date;
-        this.time = time;
-        this.totalAmount = totalAmount;
+        this.orderStatus = orderStatus;
     }
 
-    public String getName() {
-        return name;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrderId(String id) {
+        this.orderId = id;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getSid() {
+        return sid;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public String getDate() {
@@ -39,19 +40,27 @@ public class AdminOrders {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public String getTotalAmount() {
-        return totalAmount;
+    public String getSellerPhone() {
+        return sellerPhone;
     }
 
-    public void setTotalAmount(String totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setSellerPhone(String sellerPhone) {
+        this.sellerPhone = sellerPhone;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

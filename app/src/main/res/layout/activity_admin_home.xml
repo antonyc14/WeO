@@ -18,25 +18,26 @@
         android:text="Welcome, Admin"
         />
 
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/admin_update_btn"-->
+<!--        android:layout_below="@+id/admin_home_title"-->
+<!--        android:layout_margin="20dp"-->
+<!--        app:backgroundTint="@null"-->
+<!--        android:background="@color/colorPrimaryDark"-->
+<!--        android:text="Update Product"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textAllCaps="false"-->
+<!--        />-->
+
+
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/admin_update_btn"
         android:layout_below="@+id/admin_home_title"
-        android:layout_margin="20dp"
-        app:backgroundTint="@null"
-        android:background="@color/colorPrimaryDark"
-        android:text="Update Product"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        />
-
-
-    <Button
-        android:layout_below="@+id/admin_update_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/check_booking_btn"
+        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
         app:backgroundTint="@null"
         android:background="@color/colorPrimaryDark"
@@ -55,6 +56,20 @@
         app:backgroundTint="@null"
         android:background="@color/colorPrimaryDark"
         android:text="Approve New Package"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_below="@+id/approve_product_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/approve_vendor_btn"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:backgroundTint="@null"
+        android:background="@color/colorPrimaryDark"
+        android:text="Approve New Vendor"
         android:textColor="@color/white"
         android:textAllCaps="false"
         />

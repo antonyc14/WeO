@@ -2,6 +2,7 @@ package com.example.ecommerce.Model;
 
 public class Sellers {
     private String sid, name, phone, address, email,status;
+    private Integer successfulTrans;
 
     public String getSid() {
         return sid;
@@ -49,5 +50,13 @@ public class Sellers {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getSuccessfulTrans() {
+        return successfulTrans;
+    }
+
+    public void setSuccessfulTrans(Integer successfulTrans) {
+        this.successfulTrans = successfulTrans;
     }
 }

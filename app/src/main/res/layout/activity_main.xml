@@ -20,6 +20,22 @@
         />
 
     <TextView
+        android:id="@+id/app_slogan_bait"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="Time to find the right partner, let us handle the rest"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        />
+
+    <TextView
         android:id="@+id/app_slogan"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -32,7 +48,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:visibility="invisible"/>
 
     <Button
         android:layout_centerVertical="true"

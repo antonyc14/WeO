@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ecommerce.Interface.ItemClickListener;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.R;
 import com.example.ecommerce.ViewHolder.ProductViewHolder;
@@ -25,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class AdminCheckNewProductActivity extends AppCompatActivity {
+public class AdminCheckNewProductsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -72,7 +71,7 @@ public class AdminCheckNewProductActivity extends AppCompatActivity {
                                                 "Yes",
                                                 "No"
                                         };
-                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminCheckNewProductActivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminCheckNewProductsActivity.this);
                                 builder.setTitle("Do you want to Approve this Product. Are You Sure?");
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override
@@ -108,7 +107,7 @@ public class AdminCheckNewProductActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(AdminCheckNewProductActivity.this, "Product is Approved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminCheckNewProductsActivity.this, "Product is Approved", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ecommerce.Admin.AdminLoginActivity;
 import com.example.ecommerce.Model.Users;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
@@ -33,7 +34,7 @@ public class  MainActivity extends AppCompatActivity {
 
     private Button joinNowButton, loginButton;
     private ProgressDialog loadingBar;
-    private TextView sellerLoginBtn;
+    private TextView sellerLoginBtn, toAdminText, baitText;
 
     /* test variable */
 //    private FloatingActionButton fab;
@@ -61,6 +62,25 @@ public class  MainActivity extends AppCompatActivity {
         joinNowButton = (Button) findViewById(R.id.main_join_now_btn);
         loginButton = (Button) findViewById(R.id.main_login_btn);
         sellerLoginBtn = findViewById(R.id.seller_main_login_btn);
+        toAdminText = findViewById(R.id.app_slogan);
+        baitText = findViewById(R.id.app_slogan_bait);
+
+        baitText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                baitText.setVisibility(View.INVISIBLE);
+                toAdminText.setVisibility(View.VISIBLE);
+            }
+        });
+
+        toAdminText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         loadingBar = new ProgressDialog(this);
         Paper.init(this);

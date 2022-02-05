@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Admin.AdminCheckNewProductsActivity">
+    android:layout_height="wrap_content"
+
+    app:cardElevation="15dp"
+    tools:context=".Admin.AdminApproveVendorActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout3"
+        android:id="@+id/approve_admin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark"
         android:layout_alignParentTop="true">
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Approve product"
+            android:text="Approve vendor"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textAlignment="center"
@@ -29,8 +30,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/admin_product_checklist"
-        android:layout_below="@id/relativeLayout3"
+        android:id="@+id/admin_vendor_checklist"
+        android:layout_below="@id/approve_admin"
         />
 
 </RelativeLayout>

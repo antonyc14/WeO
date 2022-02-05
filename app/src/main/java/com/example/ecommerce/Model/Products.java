@@ -4,22 +4,18 @@ public class Products {
     private String pname, description,
             image, category, pid, date, time,
             productState, sellerPhone, sellerAddress,
-            sellerName;
+            sellerName,sid;
 
-    private Integer price;
+    private Integer price , successfulTrans;
 
     public Products()
     {
 
     }
 
-    public Products(String pname, String description, Integer price,
-                    String image, String category, String pid, String date,
-                    String time, String productState, String sellerPhone,
-                    String sellerAddress, String sellerName) {
+    public Products(String pname, String description, String image, String category, String pid, String date, String time, String productState, String sellerPhone, String sellerAddress, String sellerName, String sid, Integer price) {
         this.pname = pname;
         this.description = description;
-        this.price = price;
         this.image = image;
         this.category = category;
         this.pid = pid;
@@ -29,7 +25,10 @@ public class Products {
         this.sellerPhone = sellerPhone;
         this.sellerAddress = sellerAddress;
         this.sellerName = sellerName;
+        this.sid = sid;
+        this.price = price;
     }
+
     //    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String productState) {
 //        this.pname = pname;
 //        this.description = description;
@@ -137,5 +136,21 @@ public class Products {
 
     public void setSellerName(String sellerName) {
         this.sellerName = sellerName;
+    }
+
+//    public Integer getSuccessfulTrans() {
+//        return successfulTrans;
+//    }
+//
+//    public void setSuccessfulTrans(Integer successfulTrans) {
+//        this.successfulTrans = successfulTrans;
+//    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 }

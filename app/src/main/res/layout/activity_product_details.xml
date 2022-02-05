@@ -52,18 +52,50 @@
         android:layout_marginHorizontal="10dp"/>
 
 
-
-    <Button
-        app:backgroundTint="@null"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contact_btn"
-        android:background="@color/WhatsappGreen"
-        android:layout_margin="15dp"
         android:layout_alignParentBottom="true"
-        android:text="Contact Vendor Via Whatsapp"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        />
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:background="@drawable/bordered_relative_layout">
+
+        <TextView
+            android:id="@+id/seller_name_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seller Name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_successful_project"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seller_name_details"
+            android:text="Finished Project"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            app:backgroundTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact_btn"
+            android:layout_below="@id/detail_successful_project"
+            android:background="@color/WhatsappGreen"
+            android:text="Contact Vendor Via Whatsapp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

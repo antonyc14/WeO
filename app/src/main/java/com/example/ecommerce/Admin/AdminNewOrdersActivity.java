@@ -16,16 +16,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecommerce.Model.AdminOrders;
+import com.example.ecommerce.Model.Sellers;
 import com.example.ecommerce.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
 
     private RecyclerView orderList;
-    private DatabaseReference ordersRef;
+    private DatabaseReference ordersRef,sellersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_new_orders);
 
         ordersRef = FirebaseDatabase.getInstance("https://ecommerce-87169-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Orders");
+        sellersRef = FirebaseDatabase.getInstance("https://ecommerce-87169-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Sellers");
 
         orderList = findViewById(R.id.order_list);
         orderList.setLayoutManager(new LinearLayoutManager(this));
@@ -44,48 +49,39 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<AdminOrders> options =
                 new FirebaseRecyclerOptions.Builder<AdminOrders>()
-                .setQuery(ordersRef, AdminOrders.class)
+                .setQuery(ordersRef.orderByChild("orderStatus").equalTo("unknown"), AdminOrders.class)
                 .build();
 
         FirebaseRecyclerAdapter<AdminOrders,AdminOrdersViewHolder> adapter =
                 new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, int position, @NonNull AdminOrders model) {
-                        holder.userName.setText("Name: " + model.getName());
-                        holder.userPhoneNumber.setText("Phone Number: " + model.getPhone());
-                        holder.userTotalPrice.setText("Total Amount: $" + model.getTotalAmount());
-                        holder.userDateTime.setText("Order at: " + model.getDate() + " "+  model.getTime());
+                        holder.txtOrderId.setText(model.getOrderId());
+                        holder.txtUserPhone.setText("Customer Number: " + model.getUserPhone());
+                        holder.txtSellerPhone.setText("Seller Number: " + model.getSellerPhone());
+                        holder.txtOrderStatus.setText("status: " + model.getOrderStatus());
 
-                        holder.showOrdersBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String uId = getRef(position).getKey();
 
-                                Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
-                                intent.putExtra("uid", uId);
-
-                                startActivity(intent);
-
-                            }
-                        });
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 CharSequence options[]= new CharSequence[]{
-                                        "yes",
-                                        "no"
+                                        "Accept",
+                                        "Deny"
                                 };
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
-                                builder.setTitle("Booking done?");
+                                builder.setTitle("Accept this Order?");
 
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        String oId = getRef(position).getKey();
                                         if(which == 0){
-                                            String uId = getRef(position).getKey();
-
-                                            removeOrder(uId);
+                                            successOrder(oId, model.getSid());
+                                        }
+                                        else if(which == 1) {
+                                            failOrder(oId);
                                         }
                                         else{
                                             finish();
@@ -100,7 +96,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                     @NonNull
                     @Override
                     public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.booking_layout,parent,false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_order_layout,parent,false);
                         return new AdminOrdersViewHolder(view);
                     }
                 };
@@ -108,24 +104,41 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                 adapter.startListening();
     }
 
-    private void removeOrder(String uId) {
-        ordersRef.child(uId).removeValue();
+    private void successOrder(String uId, String sid) {
+        ordersRef.child(uId).child("orderStatus").setValue("success");
+
+        sellersRef.child(sid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Sellers sellers = snapshot.getValue(Sellers.class);
+
+                int value = sellers.getSuccessfulTrans();
+                value++;
+                sellersRef.child(sid).child("successfulTrans").setValue((value));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
+    private void failOrder(String uId) {
+        ordersRef.child(uId).child("status").setValue("fail");
+    }
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime;
-        public Button showOrdersBtn;
-
+        public TextView txtOrderStatus, txtUserPhone, txtSellerPhone, txtOrderId;
 
         public AdminOrdersViewHolder(@NonNull View itemView) {
             super(itemView);
-            userName = itemView.findViewById(R.id.order_user_name);
-            userPhoneNumber = itemView.findViewById(R.id.order_phone_number);
-            userTotalPrice = itemView.findViewById(R.id.order_total_price);
-            userDateTime = itemView.findViewById(R.id.order_date_time);
-
-            showOrdersBtn = itemView.findViewById(R.id.show_booking_btn);
+            txtOrderId = (TextView) itemView.findViewById(R.id.admin_order_id);
+            txtSellerPhone = (TextView) itemView.findViewById(R.id.admin_seller_phone);
+            txtUserPhone = (TextView) itemView.findViewById(R.id.admin_user_phone);
+            txtOrderStatus = itemView.findViewById(R.id.admin_order_status);
         }
     }
 }
