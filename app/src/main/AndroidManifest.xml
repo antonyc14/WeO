@@ -39,7 +39,9 @@
         <activity android:name=".Seller.SellerAddNewProductActivity" />
         <activity android:name=".Buyers.RegisterActivity" />
         <activity android:name=".Buyers.LoginActivity" />
-        <activity android:name=".Buyers.MainActivity">
+        <activity android:name=".Buyers.MainActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
