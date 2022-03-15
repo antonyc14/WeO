@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce.NoActionBar"
         tools:replace="android:theme">
-        <activity android:name=".Admin.AdminLoginActivity"></activity>
+        <activity android:name=".Buyers.MainActivity"></activity>
+        <activity android:name=".Admin.AdminLoginActivity" />
         <activity android:name=".Seller.SellerPaymentConfirmationStatusActivity" />
         <activity android:name=".Seller.SellerPaymentActivity" />
         <activity android:name=".Buyers.WeddingToDoActivity" /> <!-- <activity android:name=".Seller.SellerHomeActivity"></activity> -->
@@ -31,17 +32,15 @@
         <activity android:name=".Admin.AdminUserProductsActivity" />
         <activity android:name=".Admin.AdminNewOrdersActivity" />
         <activity android:name=".Buyers.ConfirmOrderActivity" />
-        <activity android:name=".Buyers.CartActivity" />
         <activity android:name=".Buyers.ProductDetailsActivity" />
         <activity android:name=".Buyers.SettingActivity" />
         <activity android:name=".Buyers.HomeActivity" />
-        <activity android:name=".Seller.SellerProductCategoryActivity" />
         <activity android:name=".Seller.SellerAddNewProductActivity" />
         <activity android:name=".Buyers.RegisterActivity" />
         <activity android:name=".Buyers.LoginActivity" />
-        <activity android:name=".Buyers.MainActivity"
-            android:exported="true"
-            >
+        <activity
+            android:name=".Buyers.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

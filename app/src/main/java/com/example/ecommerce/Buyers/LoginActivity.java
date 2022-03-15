@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.Admin.AdminHomeActivity;
-import com.example.ecommerce.Seller.SellerProductCategoryActivity;
 import com.example.ecommerce.Model.Users;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
