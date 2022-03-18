@@ -1,4 +1,4 @@
-package com.example.ecommerce.Buyers;
+package com.example.ecommerce.Users;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,7 +25,6 @@ import com.example.ecommerce.Admin.AdminApproveVendorActivity;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
-import com.example.ecommerce.Seller.SellerPaymentActivity;
 import com.example.ecommerce.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

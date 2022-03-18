@@ -1,4 +1,4 @@
-package com.example.ecommerce.Buyers;
+package com.example.ecommerce.Users;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;

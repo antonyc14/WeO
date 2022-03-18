@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce.NoActionBar"
         tools:replace="android:theme">
-        <activity android:name=".Buyers.MainActivity"></activity>
+        <activity android:name=".Users.MainActivity"></activity>
         <activity android:name=".Admin.AdminLoginActivity" />
         <activity android:name=".Seller.SellerPaymentConfirmationStatusActivity" />
         <activity android:name=".Seller.SellerPaymentActivity" />
-        <activity android:name=".Buyers.WeddingToDoActivity" /> <!-- <activity android:name=".Seller.SellerHomeActivity"></activity> -->
+        <activity android:name=".Users.WeddingToDoActivity" /> <!-- <activity android:name=".Seller.SellerHomeActivity"></activity> -->
         <activity android:name=".Admin.AdminCheckNewProductsActivity" />
         <activity android:name=".Admin.AdminHomeActivity" />
         <activity
@@ -26,20 +26,20 @@
             android:label="@string/title_activity_seller_home" />
         <activity android:name=".Seller.SellerLoginActivity" />
         <activity android:name=".Seller.SellerRegistrationActivity" />
-        <activity android:name=".Buyers.ForgetPasswordActivity" />
+        <activity android:name=".Users.ForgetPasswordActivity" />
         <activity android:name=".Admin.AdminApproveVendorActivity" />
-        <activity android:name=".Buyers.SearchProductActivity" />
+        <activity android:name=".Users.SearchProductActivity" />
         <activity android:name=".Admin.AdminUserProductsActivity" />
         <activity android:name=".Admin.AdminNewOrdersActivity" />
-        <activity android:name=".Buyers.ConfirmOrderActivity" />
-        <activity android:name=".Buyers.ProductDetailsActivity" />
-        <activity android:name=".Buyers.SettingActivity" />
-        <activity android:name=".Buyers.HomeActivity" />
+        <activity android:name=".Users.ConfirmOrderActivity" />
+        <activity android:name=".Users.ProductDetailsActivity" />
+        <activity android:name=".Users.SettingActivity" />
+        <activity android:name=".Users.HomeActivity" />
         <activity android:name=".Seller.SellerAddNewProductActivity" />
-        <activity android:name=".Buyers.RegisterActivity" />
-        <activity android:name=".Buyers.LoginActivity" />
+        <activity android:name=".Users.RegisterActivity" />
+        <activity android:name=".Users.LoginActivity" />
         <activity
-            android:name=".Buyers.SplashActivity"
+            android:name=".Users.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

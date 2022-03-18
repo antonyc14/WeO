@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ecommerce.Buyers.MainActivity;
+import com.example.ecommerce.Users.MainActivity;
 import com.example.ecommerce.R;
 
 public class AdminHomeActivity extends AppCompatActivity {

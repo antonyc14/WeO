@@ -1,4 +1,4 @@
-package com.example.ecommerce.Buyers;
+package com.example.ecommerce.Users;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

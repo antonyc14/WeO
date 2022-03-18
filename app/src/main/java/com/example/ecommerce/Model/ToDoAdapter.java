@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecommerce.Buyers.WeddingToDoActivity;
+import com.example.ecommerce.Users.WeddingToDoActivity;
 import com.example.ecommerce.R;
 
 import java.util.List;

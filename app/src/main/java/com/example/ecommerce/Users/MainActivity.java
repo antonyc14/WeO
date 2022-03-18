@@ -1,4 +1,4 @@
-package com.example.ecommerce.Buyers;
+package com.example.ecommerce.Users;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,11 +17,7 @@ import com.example.ecommerce.Model.Users;
 import com.example.ecommerce.Prevalent.Prevalent;
 import com.example.ecommerce.R;
 //import com.example.ecommerce.Seller.SellerHomeActivity;
-import com.example.ecommerce.Seller.SellerLoginActivity;
-import com.example.ecommerce.Seller.SellerPaymentActivity;
 import com.example.ecommerce.Seller.SellerRegistrationActivity;
-import com.example.ecommerce.Seller.SellerPaymentConfirmationStatusActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

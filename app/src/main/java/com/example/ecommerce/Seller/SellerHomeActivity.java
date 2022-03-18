@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ecommerce.Buyers.MainActivity;
+import com.example.ecommerce.Users.MainActivity;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.R;
 import com.example.ecommerce.ViewHolder.ItemViewHolder;

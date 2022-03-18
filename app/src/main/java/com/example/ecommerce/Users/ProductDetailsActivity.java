@@ -1,4 +1,4 @@
-package com.example.ecommerce.Buyers;
+package com.example.ecommerce.Users;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.Model.Sellers;
 import com.example.ecommerce.Prevalent.Prevalent;
@@ -28,7 +27,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.spec.ECField;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -199,12 +197,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                     catch (Exception e){
                                         trans = 0;
                                     }
-                                    if(sellers.getSuccessfulTrans() != 0){
-                                        sellerProject.setText("Vendor Successful Transaction = " + sellers.getSuccessfulTrans());
+                                    try{
+                                        if(sellers.getSuccessfulTrans() != 0){
+                                            sellerProject.setText("Vendor Successful Transaction = " + sellers.getSuccessfulTrans());
+                                        }
+                                        else{
+                                            sellerProject.setText("Vendor Successful Transaction = 0");
+                                        }
                                     }
-                                    else{
+                                    catch (Exception e){
                                         sellerProject.setText("Vendor Successful Transaction = 0");
                                     }
+
                                 }
                             }
 
